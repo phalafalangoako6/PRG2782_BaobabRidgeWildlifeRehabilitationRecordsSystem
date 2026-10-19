@@ -1,16 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Windows.Forms;
+
 namespace BaobabRidgeWildlife
 {
     public partial class Form1 : Form
     {
+
+        // Cached list of animals currently displayed in the grid.
+        private List<Animal> _animals = new List<Animal>();
+
+        // The AnimalID currently being edited, or null if the form is in Add mode.
+        private string _editingId = null;
+
+        private void ConfigureGridColumns()
+        {
+            dgvAnimals.AutoGenerateColumns = false;
+            dgvAnimals.Columns["colAnimalID"].DataPropertyName = "AnimalID";
+            dgvAnimals.Columns["colName"].DataPropertyName = "Name";
+            dgvAnimals.Columns["colSpecies"].DataPropertyName = "Species";
+            dgvAnimals.Columns["colAge"].DataPropertyName = "Age";
+            dgvAnimals.Columns["colScore"].DataPropertyName = "RecoveryScore";
+            dgvAnimals.Columns["colStatus"].DataPropertyName = "Status";
+            dgvAnimals.Columns["colHousing"].DataPropertyName = "HousingUnit";
+        }
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void dvgAnimals_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
 
 
         // Loads valid records from animals.txt into the grid when the form opens.
@@ -41,5 +61,13 @@ namespace BaobabRidgeWildlife
                                 "File error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvAnimals_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
+
+
+
