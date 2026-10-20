@@ -150,10 +150,10 @@ namespace BaobabRidgeWildlife
 
             // Validation
             if (name.Length == 0 || name.Length > 30 || name.Contains("|"))
-            { MessageBox.Show("Name must be 1–30 characters and cannot contain '|'.", "Validation"); txtName.Focus(); return; }
+            { MessageBox.Show("Name must be 1â€“30 characters and cannot contain '|'.", "Validation"); txtName.Focus(); return; }
 
             if (species.Length == 0 || species.Length > 30 || species.Contains("|"))
-            { MessageBox.Show("Species must be 1–30 characters and cannot contain '|'.", "Validation"); txtSpecies.Focus(); return; }
+            { MessageBox.Show("Species must be 1â€“30 characters and cannot contain '|'.", "Validation"); txtSpecies.Focus(); return; }
 
             if (!int.TryParse(ageText, out int age) || age < 0 || age > 100)
             { MessageBox.Show("Age must be a whole number between 0 and 100.", "Validation"); txtAge.Focus(); return; }
@@ -194,7 +194,7 @@ namespace BaobabRidgeWildlife
             EnterEditMode(null);
             ClearInputs();
             RefreshGrid();
-            MessageBox.Show($"Updated {updated.AnimalID} — {status}, {housing}.", "Saved");
+            MessageBox.Show($"Updated {updated.AnimalID} â€” {status}, {housing}.", "Saved");
         }
     }
 }
