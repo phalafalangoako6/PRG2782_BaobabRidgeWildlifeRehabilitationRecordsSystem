@@ -237,6 +237,64 @@ namespace BaobabRidgeWildlife
             RefreshGrid();
         }
 
+        private void btnGenerateSummary_Click(object sender, EventArgs e)
+{
+    try
+    {
+        string dataFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "animals.txt");
+        string summaryFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "summary.txt");
+
+        List<Animal> parsingCollection = new List<Animal>();
+
+        if (File.Exists(dataFilePath))
+        {
+            string[] rawLines = File.ReadAllLines(dataFilePath);
+
+            foreach (string rawLine in rawLines)
+            {
+                if (string.IsNullOrWhiteSpace(rawLine)) continue;
+
+                // Split fields by the pipe character as specified in section 5.1
+                string[] fields = rawLine.Split('|');
+
+                // Bypass malformed lines cleanly without crashing
+                if (fields.Length != 7) continue;
+
+                // Parse out data and construct temporary object instances
+                if (int.TryParse(fields[3].Trim(), out int parsedAge) &&
+                    int.TryParse(fields[4].Trim(), out int parsedScore))
+                {
+                    parsingCollection.Add(new Animal
+                    {
+                        AnimalID = fields[0].Trim(),
+                        Name = fields[1].Trim(),
+                        Species = fields[2].Trim(),
+                        Age = parsedAge,
+                        RecoveryScore = parsedScore,
+                        Status = fields[5].Trim(),
+                        HousingUnit = fields[6].Trim()
+                    });
+                }
+            }
+        }
+
+        Summary.GenerateSummaryReport(parsingCollection, summaryFilePath);
+
+        MessageBox.Show("Summary report successfully calculated and saved to summary.txt!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+    catch (IOException)
+    {
+        MessageBox.Show("The summary or data file is currently locked or in use by another program.", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+    }
+    catch (UnauthorizedAccessException)
+    {
+        MessageBox.Show("Access denied. The program does not have permissions to read or write the data assets here.", "Security Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show($"An unexpected evaluation tracking error occurred: {ex.Message}", "Application Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+}
         
     }
 }
