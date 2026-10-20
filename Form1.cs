@@ -1,29 +1,33 @@
 using System.Xml.Linq;
 using System.Data;
+
 namespace BaobabRidgeWildlife
 {
     public partial class Form1 : Form
     {
-        //1.
-        private DataTable animalTable = new DataTable();
 
 
         //Creates a collection animals that holds multiple animal records and stores a new animal every time it is added.
-        //private List<Animal> animals = new List<Animal>();
+        private List<Animal> animals = new List<Animal>();
         public Form1()
         {
             InitializeComponent();
 
-            //2. till dgvDisplay
-            animalTable.Columns.Add("Animal ID");
-            animalTable.Columns.Add("Name");
-            animalTable.Columns.Add("Species");
-            animalTable.Columns.Add("Age");
-            animalTable.Columns.Add("Recovery Score");
-            animalTable.Columns.Add("Status");
-            animalTable.Columns.Add("Housing Unit");
+            animals = FileStore.LoadAnimals(out int skippedLines, out string error);
 
-            dgvDisplay.DataSource = animalTable;
+            dgvDisplay.DataSource = null;
+            dgvDisplay.DataSource = animals;
+
+            if (!string.IsNullOrEmpty(error))
+            {
+                MessageBox.Show(error);
+            }
+            if (skippedLines > 0)
+            {
+                MessageBox.Show(skippedLines + " invalid animal records were skipped.");
+            }
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -263,47 +267,11 @@ namespace BaobabRidgeWildlife
                 MessageBox.Show("Recovery Score must be a whole number, between 0 and 100.");
                 return;
             }
-
-            //Stores the results in status and housingUbit variables
-            string status = GetAnimalStatus(recoveryScore);
-            string housingUnit = GetHousingUnit(recoveryScore);
-
-
-            //3. till MessageBox
-            // Check whether the Animal ID already exists
-            foreach (DataRow row in animalTable.Rows)
-            {
-                if (row["Animal ID"].ToString() == animalID)
-                {
-                    MessageBox.Show("This Animal ID already exists.");
-                    return;
-                }
-            }
-
-            // Add the animal to the display table
-            animalTable.Rows.Add(
-                animalID,
-                name,
-                species,
-                age,
-                recoveryScore,
-                status,
-                housingUnit
-            );
-
-            txtAnimalID.Clear();  //1.1 keep before messagebox, till txtAnimalID.Focus();
-            txtName.Clear();
-            txtSpecies.Clear();
-            txtAge.Clear();
-            txtRecoveryScore.Clear();
-
-            txtAnimalID.Focus();
-
-            MessageBox.Show("Animal added successfully!");
+            
 
             //checks if Animal ID already exists
 
-          /*  foreach (Animal existingAnimal in animals)
+            foreach (Animal existingAnimal in animals)
             {
                 if (existingAnimal.AnimalID == animalID)
                 {
@@ -313,6 +281,9 @@ namespace BaobabRidgeWildlife
 
             }
 
+            string status = GetAnimalStatus(recoveryScore);
+            string housingUnit = GetHousingUnit(recoveryScore);
+
             //Create a new animal
             Animal newAnimal = new Animal
             {
@@ -321,8 +292,20 @@ namespace BaobabRidgeWildlife
                 Species = species,
                 Age = age,
                 RecoveryScore = recoveryScore,
+                Status = status,
                 HousingUnit = housingUnit
             };
+
+            string error;
+            bool saved = FileStore.AppendAnimal(newAnimal, out error);
+
+            if (!saved)
+            {
+                MessageBox.Show(error);
+                return;
+            }
+
+
             //add animal to the list
             animals.Add(newAnimal);
 
@@ -330,8 +313,15 @@ namespace BaobabRidgeWildlife
             dgvDisplay.DataSource = null;
             dgvDisplay.DataSource = animals;
 
-            MessageBox.Show("Animal added successfully!");*/
+            txtAnimalID.Clear();
+            txtName.Clear();
+            txtSpecies.Clear();
+            txtAge.Clear();
+            txtRecoveryScore.Clear();
+            txtAnimalID.Focus();
 
+
+            MessageBox.Show("Animal added successfully!");
 
 
         }
