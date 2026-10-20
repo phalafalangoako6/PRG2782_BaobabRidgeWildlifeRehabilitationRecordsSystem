@@ -64,5 +64,25 @@ private bool GenerateSummary()
         MessageBox.Show("You do not have permission to access this file.", MessageBoxButtons.OK);
         return false;
     }
+     string avgAgeStr = "N/A";
+    string avgScoreStr = "N/A";
+
+    if (totalCount > 0)
+    {
+        double averageAge = (double)totalAge / totalCount;
+        double averageScore = (double)totalScore / totalCount;
+
+        // "F2" fixes it to 2 decimal places while InvariantCulture forces a dot separator.
+        avgAgeStr = averageAge.ToString("F2", CultureInfo.InvariantCulture);
+        avgScoreStr = averageScore.ToString("F2", CultureInfo.InvariantCulture);
+    }
+    lblTotalAnimals.Text = totalCount.ToString();
+    lblAverageAge.Text = avgAgeStr;
+    lblAverageRecoveryScore.Text = avgScoreStr;
+    lblCritical.Text = criticalCount.ToString();
+    lblSerious.Text = seriousCount.ToString();
+    lblStable.Text = stableCount.ToString();
+    lblRecovering.Text = recoveringCount.ToString();
+    lblReleaseReady.Text = releaseReadyCount.ToString();
 
 }
