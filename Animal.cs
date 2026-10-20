@@ -9,12 +9,12 @@ namespace BaobabRidgeWildlife
     // Represents one animal in the rehabilitation centre.
     public class Animal
     {
-        public required string AnimalID { get; set; }
-        public required string Name { get; set; }
-        public required string Species { get; set; }
+        public string AnimalID { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string Species { get; set; } = string.Empty;
         public int Age { get; set; }
         public int RecoveryScore { get; set; }
-        public required string Status { get; set; }
-        public required string HousingUnit { get; set; }
+        public string Status { get; set; } = string.Empty;
+        public string HousingUnit { get; set; } = string.Empty;
     }
 }
