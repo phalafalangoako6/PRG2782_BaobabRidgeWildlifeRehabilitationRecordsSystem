@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 
-namespace BaobabRidge
+namespace BaobabRidgeWildlife
 {
     
     /// All reading and writing of animals.txt and summary.txt.
