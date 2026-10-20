@@ -1,0 +1,8 @@
+WR-1001|Shadow|Leopard|6|12|Critical|Intensive Care Unit
+WR-1002|Biscuit|Meerkat|1|34|Serious|High-Dependency Ward
+WR-1003|Echo|Bat-Eared Fox|2|51|Stable|Recovery Ward
+WR-1004|Juniper|Caracal|4|68|Recovering|Outdoor Enclosure
+WR-1005|Rusty|Honey Badger|3|82|Release-Ready|Pre-Release Camp
+WR-1006|Pepper|African Wild Dog|5|8|Critical|Intensive Care Unit
+WR-1007|Milo|Vervet Monkey|2|45|Stable|Recovery Ward
+WR-1008|Sage|Serval|7|74|Recovering|Outdoor Enclosure

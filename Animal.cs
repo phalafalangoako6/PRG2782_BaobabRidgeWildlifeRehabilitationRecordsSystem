@@ -4,17 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BaobabRidgeWildlife
+namespace BaobabRidge
 {
-    // Represents one animal in the rehabilitation centre.
-    public class Animal
+  public class Animal
     {
-        public string AnimalID { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
-        public string Species { get; set; } = string.Empty;
+
+        /// Represents a single animal in care. Holds every field that is stored
+        /// in animals.txt, plus the calculated Status and HousingUnit. 
+
+        public string AnimalID { get; set; }
+        public string Name { get; set; }
+        public string Species { get; set; }
         public int Age { get; set; }
         public int RecoveryScore { get; set; }
-        public string Status { get; set; } = string.Empty;
-        public string HousingUnit { get; set; } = string.Empty;
+        public string Status { get; set; }
+        public string HousingUnit { get; set; }
     }
 }
