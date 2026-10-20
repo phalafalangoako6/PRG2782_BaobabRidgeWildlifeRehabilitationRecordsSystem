@@ -31,10 +31,10 @@ The application uses a clean separation of concerns across multiple classes to e
     
    **3. File Storage and Error Handling (`FileStore.cs`)**
     Because databases are not allowed, all data is stored in plain text. This class handles reading, appending, and rewriting the text file.
-    *   **Loading:** Reads the file line by line, splits it by the pipe (`|`) character, and validates the fields. If a line is malformed, it skips it and reports the count to the user. If the file is missing, it creates an empty one.
-    *   **Saving (Append):** When adding, it simply appends one new line to the bottom of the file.
-    *   **Saving (Rewrite):** When updating or deleting, it overwrites the entire file with the updated list to prevent data corruption.
-    *   **Error Catching:** Every file operation is wrapped in `try/catch` blocks. It specifically catches `IOException` (file in use) and `UnauthorizedAccessException` (permission denied) to show friendly error messages instead of crashing the app.
+       **Loading:** Reads the file line by line, splits it by the pipe (`|`) character, and validates the fields. If a line is malformed, it skips it and reports the count to the user. If the file is missing, it creates an empty one.
+      **Saving (Append):** When adding, it simply appends one new line to the bottom of the file.
+      **Saving (Rewrite):** When updating or deleting, it overwrites the entire file with the updated list to prevent data corruption.
+      **Error Catching:** Every file operation is wrapped in `try/catch` blocks. It specifically catches `IOException` (file in use) and `UnauthorizedAccessException` (permission denied) to show friendly error messages instead of crashing the app.
     
    **4. User Interface (`MainForm.cs`)**
     This class handles all the button clicks, the DataGridView (which is read-only and locked to full-row selection), the form validation, and switching between "Add Mode" (Add button enabled) and "Edit Mode" (Save Changes button enabled).
