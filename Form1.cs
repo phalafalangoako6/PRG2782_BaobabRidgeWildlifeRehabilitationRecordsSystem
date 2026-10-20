@@ -254,13 +254,10 @@ namespace BaobabRidgeWildlife
             {
                 if (string.IsNullOrWhiteSpace(rawLine)) continue;
 
-                // Split fields by the pipe character as specified in section 5.1
                 string[] fields = rawLine.Split('|');
 
-                // Bypass malformed lines cleanly without crashing
                 if (fields.Length != 7) continue;
 
-                // Parse out data and construct temporary object instances
                 if (int.TryParse(fields[3].Trim(), out int parsedAge) &&
                     int.TryParse(fields[4].Trim(), out int parsedScore))
                 {
