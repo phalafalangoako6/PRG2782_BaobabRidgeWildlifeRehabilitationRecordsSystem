@@ -52,7 +52,9 @@ The application uses a clean separation of concerns across multiple classes to e
 4.  Press **F5** (or click Build > Start Debugging) to run the application.
     *   *Note: The `animals.txt` file is configured with "Copy if newer" to ensure it is always placed next to the compiled `.exe` in the output directory.*
 
-
+## Known Limitations
+The application is single-user; it does not implement file-locking for simultaneous multi-user editing.
+Status and housing units are only recalculated when a record is added or updated, not dynamically on load.
 
 
 
