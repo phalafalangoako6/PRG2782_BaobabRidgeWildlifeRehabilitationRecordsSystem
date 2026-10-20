@@ -28,198 +28,217 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvAnimals = new System.Windows.Forms.DataGridView();
-            this.colAnimalID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHousing = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtSearchID = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.txtAnimalID = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtSpecies = new System.Windows.Forms.TextBox();
-            this.txtAge = new System.Windows.Forms.TextBox();
-            this.txtScore = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAnimals)).BeginInit();
-            this.SuspendLayout();
+            dgvAnimals = new DataGridView();
+            colAnimalID = new DataGridViewTextBoxColumn();
+            colName = new DataGridViewTextBoxColumn();
+            colSpecies = new DataGridViewTextBoxColumn();
+            colAge = new DataGridViewTextBoxColumn();
+            colScore = new DataGridViewTextBoxColumn();
+            colStatus = new DataGridViewTextBoxColumn();
+            colHousing = new DataGridViewTextBoxColumn();
+            txtSearchID = new TextBox();
+            btnSearch = new Button();
+            txtAnimalID = new TextBox();
+            txtName = new TextBox();
+            txtSpecies = new TextBox();
+            txtAge = new TextBox();
+            txtScore = new TextBox();
+            btnAdd = new Button();
+            btnSave = new Button();
+            btnClear = new Button();
+            btnDelete = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvAnimals).BeginInit();
+            SuspendLayout();
             // 
             // dgvAnimals
             // 
-            this.dgvAnimals.AllowUserToAddRows = false;
-            this.dgvAnimals.AllowUserToDeleteRows = false;
-            this.dgvAnimals.AutoGenerateColumns = false;
-            this.dgvAnimals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAnimals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colAnimalID,
-            this.colName,
-            this.colSpecies,
-            this.colAge,
-            this.colScore,
-            this.colStatus,
-            this.colHousing});
-            this.dgvAnimals.Location = new System.Drawing.Point(12, 12);
-            this.dgvAnimals.MultiSelect = false;
-            this.dgvAnimals.Name = "dgvAnimals";
-            this.dgvAnimals.ReadOnly = true;
-            this.dgvAnimals.RowHeadersVisible = false;
-            this.dgvAnimals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAnimals.Size = new System.Drawing.Size(776, 300);
-            this.dgvAnimals.TabIndex = 0;
-            this.dgvAnimals.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAnimals_CellClick);
+            dgvAnimals.AllowUserToAddRows = false;
+            dgvAnimals.AllowUserToDeleteRows = false;
+            dgvAnimals.AutoGenerateColumns = false;
+            dgvAnimals.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAnimals.Columns.AddRange(new DataGridViewColumn[] { colAnimalID, colName, colSpecies, colAge, colScore, colStatus, colHousing });
+            dgvAnimals.Location = new Point(12, 12);
+            dgvAnimals.MultiSelect = false;
+            dgvAnimals.Name = "dgvAnimals";
+            dgvAnimals.ReadOnly = true;
+            dgvAnimals.RowHeadersVisible = false;
+            dgvAnimals.RowHeadersWidth = 51;
+            dgvAnimals.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAnimals.Size = new Size(776, 300);
+            dgvAnimals.TabIndex = 0;
+            dgvAnimals.CellClick += dgvAnimals_CellClick;
             // 
             // colAnimalID
             // 
-            this.colAnimalID.HeaderText = "Animal ID";
-            this.colAnimalID.Name = "colAnimalID";
-            this.colAnimalID.ReadOnly = true;
+            colAnimalID.HeaderText = "Animal ID";
+            colAnimalID.MinimumWidth = 6;
+            colAnimalID.Name = "colAnimalID";
+            colAnimalID.ReadOnly = true;
+            colAnimalID.Width = 125;
             // 
             // colName
             // 
-            this.colName.HeaderText = "Name";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
+            colName.HeaderText = "Name";
+            colName.MinimumWidth = 6;
+            colName.Name = "colName";
+            colName.ReadOnly = true;
+            colName.Width = 125;
             // 
             // colSpecies
             // 
-            this.colSpecies.HeaderText = "Species";
-            this.colSpecies.Name = "colSpecies";
-            this.colSpecies.ReadOnly = true;
+            colSpecies.HeaderText = "Species";
+            colSpecies.MinimumWidth = 6;
+            colSpecies.Name = "colSpecies";
+            colSpecies.ReadOnly = true;
+            colSpecies.Width = 125;
             // 
             // colAge
             // 
-            this.colAge.HeaderText = "Age";
-            this.colAge.Name = "colAge";
-            this.colAge.ReadOnly = true;
+            colAge.HeaderText = "Age";
+            colAge.MinimumWidth = 6;
+            colAge.Name = "colAge";
+            colAge.ReadOnly = true;
+            colAge.Width = 125;
             // 
             // colScore
             // 
-            this.colScore.HeaderText = "Recovery Score";
-            this.colScore.Name = "colScore";
-            this.colScore.ReadOnly = true;
+            colScore.HeaderText = "Recovery Score";
+            colScore.MinimumWidth = 6;
+            colScore.Name = "colScore";
+            colScore.ReadOnly = true;
+            colScore.Width = 125;
             // 
             // colStatus
             // 
-            this.colStatus.HeaderText = "Status";
-            this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
+            colStatus.HeaderText = "Status";
+            colStatus.MinimumWidth = 6;
+            colStatus.Name = "colStatus";
+            colStatus.ReadOnly = true;
+            colStatus.Width = 125;
             // 
             // colHousing
             // 
-            this.colHousing.HeaderText = "Housing Unit";
-            this.colHousing.Name = "colHousing";
-            this.colHousing.ReadOnly = true;
+            colHousing.HeaderText = "Housing Unit";
+            colHousing.MinimumWidth = 6;
+            colHousing.Name = "colHousing";
+            colHousing.ReadOnly = true;
+            colHousing.Width = 125;
             // 
             // txtSearchID
             // 
-            this.txtSearchID.Location = new System.Drawing.Point(12, 330);
-            this.txtSearchID.Name = "txtSearchID";
-            this.txtSearchID.Size = new System.Drawing.Size(150, 27);
-            this.txtSearchID.TabIndex = 1;
+            txtSearchID.Location = new Point(12, 330);
+            txtSearchID.Name = "txtSearchID";
+            txtSearchID.Size = new Size(150, 27);
+            txtSearchID.TabIndex = 1;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(168, 329);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(94, 29);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            btnSearch.Location = new Point(168, 329);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(94, 29);
+            btnSearch.TabIndex = 2;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // txtAnimalID
             // 
-            this.txtAnimalID.Location = new System.Drawing.Point(12, 380);
-            this.txtAnimalID.Name = "txtAnimalID";
-            this.txtAnimalID.Size = new System.Drawing.Size(150, 27);
-            this.txtAnimalID.TabIndex = 3;
+            txtAnimalID.Location = new Point(12, 380);
+            txtAnimalID.Name = "txtAnimalID";
+            txtAnimalID.Size = new Size(150, 27);
+            txtAnimalID.TabIndex = 3;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(168, 380);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(150, 27);
-            this.txtName.TabIndex = 4;
+            txtName.Location = new Point(168, 380);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(150, 27);
+            txtName.TabIndex = 4;
             // 
             // txtSpecies
             // 
-            this.txtSpecies.Location = new System.Drawing.Point(324, 380);
-            this.txtSpecies.Name = "txtSpecies";
-            this.txtSpecies.Size = new System.Drawing.Size(150, 27);
-            this.txtSpecies.TabIndex = 5;
+            txtSpecies.Location = new Point(324, 380);
+            txtSpecies.Name = "txtSpecies";
+            txtSpecies.Size = new Size(150, 27);
+            txtSpecies.TabIndex = 5;
             // 
             // txtAge
             // 
-            this.txtAge.Location = new System.Drawing.Point(480, 380);
-            this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(100, 27);
-            this.txtAge.TabIndex = 6;
+            txtAge.Location = new Point(480, 380);
+            txtAge.Name = "txtAge";
+            txtAge.Size = new Size(100, 27);
+            txtAge.TabIndex = 6;
             // 
             // txtScore
             // 
-            this.txtScore.Location = new System.Drawing.Point(586, 380);
-            this.txtScore.Name = "txtScore";
-            this.txtScore.Size = new System.Drawing.Size(100, 27);
-            this.txtScore.TabIndex = 7;
+            txtScore.Location = new Point(586, 380);
+            txtScore.Name = "txtScore";
+            txtScore.Size = new Size(100, 27);
+            txtScore.TabIndex = 7;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 430);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(94, 29);
-            this.btnAdd.TabIndex = 8;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Location = new Point(12, 430);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(94, 29);
+            btnAdd.TabIndex = 8;
+            btnAdd.Text = "Add";
+            btnAdd.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
-            this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(112, 430);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 29);
-            this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "Save Changes";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Enabled = false;
+            btnSave.Location = new Point(112, 430);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(120, 29);
+            btnSave.TabIndex = 9;
+            btnSave.Text = "Save Changes";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(238, 430);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(94, 29);
-            this.btnClear.TabIndex = 10;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            btnClear.Location = new Point(238, 430);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(94, 29);
+            btnClear.TabIndex = 10;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(661, 430);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(94, 29);
+            btnDelete.TabIndex = 11;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 480);
-            this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txtScore);
-            this.Controls.Add(this.txtAge);
-            this.Controls.Add(this.txtSpecies);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.txtAnimalID);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtSearchID);
-            this.Controls.Add(this.dgvAnimals);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAnimals)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 480);
+            Controls.Add(btnDelete);
+            Controls.Add(btnClear);
+            Controls.Add(btnSave);
+            Controls.Add(btnAdd);
+            Controls.Add(txtScore);
+            Controls.Add(txtAge);
+            Controls.Add(txtSpecies);
+            Controls.Add(txtName);
+            Controls.Add(txtAnimalID);
+            Controls.Add(btnSearch);
+            Controls.Add(txtSearchID);
+            Controls.Add(dgvAnimals);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvAnimals).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -242,5 +261,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

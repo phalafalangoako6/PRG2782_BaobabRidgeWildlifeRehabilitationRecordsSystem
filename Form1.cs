@@ -38,7 +38,7 @@ namespace BaobabRidgeWildlife
             ConfigureGridColumns();
             RefreshGrid();
 
-            
+
         }
 
         // Reloads animals.txt and rebinds the grid without creating duplicate rows.
@@ -196,5 +196,47 @@ namespace BaobabRidgeWildlife
             RefreshGrid();
             MessageBox.Show($"Updated {updated.AnimalID} — {status}, {housing}.", "Saved");
         }
+        // Deletes the animal selected in the grid after Yes/No confirmation.
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // 1. Check if a row is actually selected
+            if (dgvAnimals.CurrentRow == null || !(dgvAnimals.CurrentRow.DataBoundItem is Animal selected))
+            {
+                MessageBox.Show("Select a row in the grid to delete.", "Delete");
+                return;
+            }
+
+            // 2. Ask for confirmation
+            var confirm = MessageBox.Show(
+                $"Delete {selected.AnimalID} ({selected.Name})? This cannot be undone.",
+                "Confirm delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm != DialogResult.Yes) return;
+
+            // 3. Try to delete from the file
+            try
+            {
+                AnimalRepository.DeleteRecord(selected.AnimalID);
+            }
+            catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+            {
+                MessageBox.Show("Could not delete record. " + ex.Message, "File error");
+                return;
+            }
+
+            // 4. Clear the form if the deleted animal was currently being edited
+            if (_editingId == selected.AnimalID)
+            {
+                EnterEditMode(null);
+                ClearInputs();
+            }
+
+            // 5. Refresh the grid
+            RefreshGrid();
+        }
+
+        
     }
 }
