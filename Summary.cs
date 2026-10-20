@@ -85,4 +85,41 @@ private bool GenerateSummary()
     lblRecovering.Text = recoveringCount.ToString();
     lblReleaseReady.Text = releaseReadyCount.ToString();
 
+     //Overwrites Summary.txt
+    try
+    {
+        string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+
+        using (StreamWriter writer = new StreamWriter(summaryFile, false)) // false means overwrite
+        {
+            writer.WriteLine("BAOBAB RIDGE WILDLIFE REHABILITATION CENTRE");
+            writer.WriteLine("ANIMAL SUMMARY REPORT");
+            writer.WriteLine("Generated: " + timestamp);
+            writer.WriteLine("----------------------------------------");
+            writer.WriteLine("Total animals:");
+            writer.WriteLine(totalCount);
+            writer.WriteLine("Average age (years):");
+            writer.WriteLine(avgAgeStr);
+            writer.WriteLine("Average recovery score:");
+            writer.WriteLine(avgScoreStr);
+            writer.WriteLine("----------------------------------------");
+            writer.WriteLine("Animals per status:");
+            writer.WriteLine("Critical:");
+            writer.WriteLine(criticalCount);
+            writer.WriteLine("Serious:");
+            writer.WriteLine(seriousCount);
+            writer.WriteLine("Stable:");
+            writer.WriteLine(stableCount);
+            writer.WriteLine("Recovering:");
+            writer.WriteLine(recoveringCount);
+            writer.WriteLine("Release-Ready:");
+            writer.WriteLine(releaseReadyCount);
+        }
+        return true;
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Could not save the summary file: " + ex.Message, "Write Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return false;
+    }
 }
